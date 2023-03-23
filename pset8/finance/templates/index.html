@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    index
+{% endblock %}
+
+{% block main %}
+    <form action="/index" method="get">
+        <table class="table table-striped">
+          <thead>
+                <tr>
+                    <th class="text-left">Symbol</th>
+                    <th class="text-left">Name</th>
+                    <th class="text-right">Shares</th>
+                    <th class="text-right">Price</th>
+                    <th class="text-right">TOTAL</th>
+                </tr>
+          </thead>
+          <tbody>
+                {% for line in shares_balance %}
+                <tr>
+                    <td class="text-left">{{ line["symbol"] }}</td>
+                    <td class="text-left">{{ line["company"] }}</td>
+                    <td class="text-right">{{ line["shares"] }}</td>
+                    <td class="text-right">{{ line["price"] }}</td>
+                    <td class="text-right">{{ line["total_per_share"] }}</td>
+                </tr>
+                {% endfor %}
+          </tbody>
+          <tfoot>
+                <tr>
+                    <th class="border-0 fw-bold text-right" colspan="4">CASH</th>
+                    <td class="border-0 text-right">{{ cash }}</td>
+
+                </tr>
+                <tr>
+                    <th class="border-0 fw-bold text-right" colspan="4">TOTAL</th>
+                    <td class="border-0 text-right">{{ total_balance }}</td>
+                </tr>
+          </tfoot>
+        </table>
+    </form>
+{% endblock %}
+
+
+

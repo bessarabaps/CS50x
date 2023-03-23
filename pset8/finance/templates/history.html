@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    history
+{% endblock %}
+
+{% block main %}
+    <form action="/history" method="get">
+        <table class="table table-striped">
+          <thead>
+                <tr>
+                    <th class="text-left">Data</th>
+                    <th class="text-left">Symbol</th>
+                    <th class="text-left">Name</th>
+                    <th class="text-right">Shares</th>
+                    <th class="text-right">Price</th>
+                </tr>
+          </thead>
+          <tbody>
+                {% for line in transactions %}
+                <tr>
+                    <td class="text-left">{{ line["data"] }}</td>
+                    <td class="text-left">{{ line["symbol"] }}</td>
+                    <td class="text-left">{{ line["company"] }}</td>
+                    <td class="text-right">{{ line["shares"] }}</td>
+                    <td class="text-right">{{ line["price"] }}</td>
+                </tr>
+                {% endfor %}
+          </tbody>
+        </table>
+    </form>
+{% endblock %}
+
+
+
